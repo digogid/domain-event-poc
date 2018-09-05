@@ -1,15 +1,18 @@
-﻿using System;
+﻿using DomainEventPOC.Domain.Handler;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DomainEventPOC.Domain.Events
 {
-    public class DomainEventManager
+    public class DomainEventManager<T> where T : IDomainEvent
     {
-        public static void Raise<T>(T @event) where T : IDomainEvent
+        public static IEnumerable<IHandler<T>> _handlers;
+
+        public static void Raise(T @event)
         {
-            // ioc container to get all handlers
+            foreach(var handler in _handlers)
+            {
+                handler.Handle(@event);
+            }
         }
     }
 }

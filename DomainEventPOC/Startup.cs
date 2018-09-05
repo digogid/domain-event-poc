@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DomainEventPOC.Domain.Events;
+using DomainEventPOC.Domain.Handler;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace DomainEventPOC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped(typeof(IHandler<>), typeof(IDomainEvent));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +43,7 @@ namespace DomainEventPOC
             {
                 app.UseHsts();
             }
-
+            DomainEventManager<IDomainEvent>._handlers = app.ApplicationServices.GetServices<IHandler<IDomainEvent>>();
             app.UseHttpsRedirection();
             app.UseMvc();
         }

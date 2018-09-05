@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainEventPOC.Domain.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace DomainEventPOC.Domain.Model
             Nome = nome;
             Email = email;
 
-            // usuarioCriadoEvent
+            
         }
     }
 }
