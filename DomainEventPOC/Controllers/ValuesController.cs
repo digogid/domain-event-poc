@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DomainEventPOC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DomainEventPOC.Controllers
@@ -12,9 +9,10 @@ namespace DomainEventPOC.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var usuario = new Usuario("Rodrigo Silva", "rodrigo.silva1302@gmail.com");
+            return Ok();
         }
 
         // GET api/values/5

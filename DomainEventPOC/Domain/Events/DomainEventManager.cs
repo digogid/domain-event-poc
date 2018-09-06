@@ -1,15 +1,19 @@
 ﻿using DomainEventPOC.Domain.Handler;
+using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 
 namespace DomainEventPOC.Domain.Events
 {
-    public class DomainEventManager<T> where T : IDomainEvent
+    public class DomainEventManager
     {
-        public static IEnumerable<IHandler<T>> _handlers;
+        public static IServiceProvider ServiceProvider;
 
-        public static void Raise(T @event)
+        public static void Raise<T>(T @event) where T : IDomainEvent
         {
-            foreach(var handler in _handlers)
+            var handlers = ServiceProvider.GetServices(typeof(IHandler<T>)) as IEnumerable<IHandler<T>>;
+            
+            foreach(var handler in handlers)
             {
                 handler.Handle(@event);
             }

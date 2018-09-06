@@ -1,8 +1,5 @@
 ﻿using DomainEventPOC.Domain.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DomainEventPOC.Domain.Model
 {
@@ -23,8 +20,8 @@ namespace DomainEventPOC.Domain.Model
             Id = Guid.NewGuid();
             Nome = nome;
             Email = email;
-
-            
+            var evento = new EventoUsuarioCriado(this);
+            DomainEventManager.Raise(evento);
         }
     }
 }

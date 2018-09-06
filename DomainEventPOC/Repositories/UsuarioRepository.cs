@@ -1,9 +1,5 @@
 ﻿using DomainEventPOC.Domain.Model;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DomainEventPOC.Repositories
 {
@@ -12,9 +8,11 @@ namespace DomainEventPOC.Repositories
         public async void AddAsync(Usuario usuario)
         {
             var userAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(usuario);
-            var writer = new StreamWriter($"{Directory.GetDirectoryRoot(Directory.GetCurrentDirectory())}/TxtData/Usuario.txt");
+            var writer = new StreamWriter($"{Directory.GetCurrentDirectory()}\\TxtData\\Usuarios.txt", true);
 
             await writer.WriteLineAsync(userAsJson);
+            
+            writer.Dispose();
         }
     }
 }
