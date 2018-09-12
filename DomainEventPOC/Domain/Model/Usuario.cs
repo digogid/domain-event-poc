@@ -8,20 +8,22 @@ namespace DomainEventPOC.Domain.Model
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
+        public string Senha { get; set; }
 
-        // ef .ctor
-        internal Usuario()
-        {
-
-        }
-
-        public Usuario(string nome, string email)
+        public Usuario(string nome, string email, string senha)
         {
             Id = Guid.NewGuid();
             Nome = nome;
             Email = email;
-            var evento = new EventoUsuarioCriado(this);
+            Senha = senha;
+
+            var evento = new UsuarioCriadoEvent(this);
             DomainEventManager.Raise(evento);
+        }
+
+        public void AlterarSenha(string novaSenha)
+        {
+            Senha = novaSenha;
         }
     }
 }

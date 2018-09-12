@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DomainEventPOC.Domain.Events
 {
-    public class EventoUsuarioCriado : IDomainEvent
+    public class UsuarioCriadoEvent : IDomainEvent
     {
         public Usuario Usuario { get; set; }
         public DateTime DataOcorrencia { get; set; }
 
-        public EventoUsuarioCriado(Usuario usuario)
+        public UsuarioCriadoEvent(Usuario usuario)
         {
             Usuario = usuario;
             DataOcorrencia = DateTime.Now;

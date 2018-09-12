@@ -3,10 +3,10 @@ using DomainEventPOC.Repositories;
 
 namespace DomainEventPOC.Domain.Handler
 {
-    public class UsuarioCriadoHandler : IHandler<EventoUsuarioCriado>
+    public class UsuarioCriadoHandler : IHandler<UsuarioCriadoEvent>
     {
         private readonly UsuarioRepository repo = new UsuarioRepository();
-        public void Handle(EventoUsuarioCriado args)
+        public void Handle(UsuarioCriadoEvent args)
         {
             var usuario = args.Usuario;
             repo.AddAsync(usuario);

@@ -1,4 +1,0 @@
-{"Id":"763825d9-ef04-4f19-9031-03bf3f8bd4d6","Nome":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com"}
-{"Id":"b7075584-a9eb-423a-a879-5a64626aa52b","Nome":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com"}
-{"Id":"6427071d-25ab-4bf0-9069-ec3be25fbd5f","Nome":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com"}
-{"Id":"4949c5bd-d159-4506-bed5-0a2d218c5bd7","Nome":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com"}
