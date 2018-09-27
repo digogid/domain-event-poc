@@ -24,6 +24,8 @@ namespace DomainEventPOC.Domain.Model
         public void AlterarSenha(string novaSenha)
         {
             Senha = novaSenha;
+            var evento = new SenhaAlteradaEvent(this.Id, novaSenha);
+            DomainEventManager.Raise(evento);
         }
     }
 }

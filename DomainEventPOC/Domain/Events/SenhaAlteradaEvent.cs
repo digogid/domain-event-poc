@@ -10,7 +10,7 @@ namespace DomainEventPOC.Domain.Events
 
         public SenhaAlteradaEvent(Guid usuarioId, string novaSenha)
         {
-            UsuarioId = UsuarioId;
+            UsuarioId = usuarioId;
             NovaSenha = novaSenha;
             DataOcorrencia = DateTime.Now;
         }
