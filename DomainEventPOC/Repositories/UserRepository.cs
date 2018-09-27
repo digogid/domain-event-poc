@@ -4,20 +4,20 @@ using System.IO;
 
 namespace DomainEventPOC.Repositories
 {
-    public class UsuarioRepository
+    public class UserRepository
     {
         private StreamWriter writer;
         private readonly string dbPath;
 
-        public UsuarioRepository()
+        public UserRepository()
         {
             dbPath = $"{Directory.GetCurrentDirectory()}\\TxtData\\Usuarios.txt";
         }
 
-        public async void AddAsync(Usuario usuario)
+        public async void AddAsync(User user)
         {
             writer = new StreamWriter(dbPath, true);
-            var userAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(usuario);
+            var userAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(user);
             
             await writer.WriteLineAsync(userAsJson);
             Dispose();
@@ -25,11 +25,13 @@ namespace DomainEventPOC.Repositories
 
         private void Dispose()
         {
-            writer.Dispose();
-            //reader.Dispose();
+            if (writer != null)
+                writer.Dispose();
+
+            writer = null;
         }
 
-        public async void UpdatePassword(Guid usuarioId, string novaSenha)
+        public async void UpdatePassword(Guid userId, string newPassword)
         {
             string[] allUsers = File.ReadAllLines(dbPath);
             string newUserData = string.Empty;
@@ -38,7 +40,7 @@ namespace DomainEventPOC.Repositories
             for(int i = 0; i < allUsers.Length; i++)
             {
                 string userData = allUsers[i];
-                if (userData.Contains(usuarioId.ToString()))
+                if (userData.Contains(userId.ToString()))
                 {
                     indexToChange = i;
                     var properties = userData.Split(',');
@@ -50,7 +52,7 @@ namespace DomainEventPOC.Repositories
 
                         if (propertyName.Equals("\"Senha\""))
                         {
-                            propertyValue = $"\"{novaSenha}\"}}";
+                            propertyValue = $"\"{newPassword}\"}}";
                             newUserData = userData.Replace(oldValue, propertyValue);
                         }
                     }

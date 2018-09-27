@@ -21,8 +21,8 @@ namespace DomainEventPOC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddTransient(typeof(IHandler<UsuarioCriadoEvent>), typeof(UsuarioCriadoHandler));
-            services.AddTransient(typeof(IHandler<SenhaAlteradaEvent>), typeof(SenhaAlteradaHandler));
+            services.AddTransient(typeof(IHandler<UserCreated>), typeof(UserCreatedHandler));
+            services.AddTransient(typeof(IHandler<ChangedPassword>), typeof(ChangedPasswordHandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
