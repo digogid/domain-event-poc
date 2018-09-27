@@ -1,16 +1,21 @@
 ﻿using DomainEventPOC.Domain.Events;
-using DomainEventPOC.Repositories;
+using DomainEventPOC.Interfaces.Repositories;
 
 namespace DomainEventPOC.Domain.Handler
 {
     public class ChangedPasswordHandler : IHandler<ChangedPassword>
     {
-        private readonly UserRepository repo = new UserRepository();
+        private readonly IUserRepository _repository;
+        public ChangedPasswordHandler(IUserRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void Handle(ChangedPassword args)
         {
             var userId = args.UserId;
             var newPassword = args.NewPassword;
-            repo.UpdatePassword(userId, newPassword);
+            _repository.UpdatePassword(userId, newPassword);
         }
     }
 }

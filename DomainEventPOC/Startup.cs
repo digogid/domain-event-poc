@@ -1,5 +1,7 @@
 ﻿using DomainEventPOC.Domain.Events;
 using DomainEventPOC.Domain.Handler;
+using DomainEventPOC.Interfaces.Repositories;
+using DomainEventPOC.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,7 @@ namespace DomainEventPOC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient(typeof(IHandler<UserCreated>), typeof(UserCreatedHandler));
             services.AddTransient(typeof(IHandler<ChangedPassword>), typeof(ChangedPasswordHandler));
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

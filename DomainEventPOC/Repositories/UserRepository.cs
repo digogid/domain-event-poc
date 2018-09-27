@@ -1,10 +1,11 @@
 ﻿using DomainEventPOC.Domain.Model;
+using DomainEventPOC.Interfaces.Repositories;
 using System;
 using System.IO;
 
 namespace DomainEventPOC.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private StreamWriter writer;
         private readonly string dbPath;
@@ -50,7 +51,7 @@ namespace DomainEventPOC.Repositories
                         var propertyValue = property.Split(':')[1];
                         var oldValue = property.Split(':')[1];
 
-                        if (propertyName.Equals("\"Senha\""))
+                        if (propertyName.Equals("\"Password\""))
                         {
                             propertyValue = $"\"{newPassword}\"}}";
                             newUserData = userData.Replace(oldValue, propertyValue);

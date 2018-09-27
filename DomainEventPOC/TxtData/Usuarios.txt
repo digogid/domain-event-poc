@@ -1,1 +1,2 @@
-{"Id":"14d93f9c-b3ad-4e33-8a10-f233f830b8c3","Nome":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com","Senha":"novaSenha321"}
+{"Id":"77a098f9-f76c-4505-8ee7-7fba7e88c9d6","Name":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com","Password":"DInewpw"}
+{"Id":"0e0a09f1-8c40-4f66-9e41-c7493bf49f08","Name":"Rodrigo Silva","Email":"rodrigo.silva1302@gmail.com","Password":"DInewpw"}

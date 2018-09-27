@@ -11,9 +11,9 @@ namespace DomainEventPOC.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var user = new User("Rodrigo Silva", "rodrigo.silva1302@gmail.com", "senha123");
+            var user = new User("Rodrigo Silva", "rodrigo.silva1302@gmail.com", "DIpword");
 
-            user.UpdatePassword("novaSenha321");
+            user.UpdatePassword("DInewpw");
 
             return Ok();
         }
